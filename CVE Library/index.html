@@ -7,16 +7,16 @@
     <meta name="HandheldFriendly" content="True">
 	<meta name="referrer" content="no-referrer" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="WebRCECVE-2016-4437详情 Apache Shiro是一款开源安全框架，提供身份验证、授权、密码学和会话管理。Shiro框架直观、易用，同时也能提供健壮的安全性。 Apache Shiro 1.2.4及以前版本中，加密的用户信息序列化后存储在名为remember-me的Cookie中。 攻击者可以使用Shiro的默认密钥伪造用户Cookie，触发Java反序列化漏洞，进而在目标机器">
+    <meta name="description" content="TODO:  CVE-2018-14729  WebRCECVE-2016-4437详情 Apache Shiro是一款开源安全框架，提供身份验证、授权、密码学和会话管理。Shiro框架直观、易用，同时也能提供健壮的安全性。 Apache Shiro 1.2.4及以前版本中，加密的用户信息序列化后存储在名为remember-me的Cookie中。 攻击者可以使用Shiro的默认密钥伪造用户Cook">
 <meta name="keywords" content="CVE">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CVE Library">
 <meta property="og:url" content="https:&#x2F;&#x2F;shavchen.github.io&#x2F;CVE%20Library&#x2F;index.html">
 <meta property="og:site_name" content="shavchen">
-<meta property="og:description" content="WebRCECVE-2016-4437详情 Apache Shiro是一款开源安全框架，提供身份验证、授权、密码学和会话管理。Shiro框架直观、易用，同时也能提供健壮的安全性。 Apache Shiro 1.2.4及以前版本中，加密的用户信息序列化后存储在名为remember-me的Cookie中。 攻击者可以使用Shiro的默认密钥伪造用户Cookie，触发Java反序列化漏洞，进而在目标机器">
+<meta property="og:description" content="TODO:  CVE-2018-14729  WebRCECVE-2016-4437详情 Apache Shiro是一款开源安全框架，提供身份验证、授权、密码学和会话管理。Shiro框架直观、易用，同时也能提供健壮的安全性。 Apache Shiro 1.2.4及以前版本中，加密的用户信息序列化后存储在名为remember-me的Cookie中。 攻击者可以使用Shiro的默认密钥伪造用户Cook">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https:&#x2F;&#x2F;www.77169.net&#x2F;wp-content&#x2F;uploads&#x2F;2020&#x2F;05&#x2F;5-1588815830.png">
-<meta property="og:updated_time" content="2020-07-12T09:31:49.931Z">
+<meta property="og:updated_time" content="2020-08-19T10:02:16.028Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;www.77169.net&#x2F;wp-content&#x2F;uploads&#x2F;2020&#x2F;05&#x2F;5-1588815830.png">
     
@@ -100,7 +100,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Web"><span class="toc-number">1.</span> <span class="toc-text">Web</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#RCE"><span class="toc-number">1.1.</span> <span class="toc-text">RCE</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2016-4437"><span class="toc-number">1.1.1.</span> <span class="toc-text">CVE-2016-4437</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2018-3191"><span class="toc-number">1.1.2.</span> <span class="toc-text">CVE-2018-3191</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2019-0232"><span class="toc-number">1.1.3.</span> <span class="toc-text">CVE-2019-0232</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2019-2725"><span class="toc-number">1.1.4.</span> <span class="toc-text">CVE-2019-2725</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2019-2729"><span class="toc-number">1.1.5.</span> <span class="toc-text">CVE-2019-2729</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2019-15107"><span class="toc-number">1.1.6.</span> <span class="toc-text">CVE-2019-15107</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2019-19781"><span class="toc-number">1.1.7.</span> <span class="toc-text">CVE-2019-19781</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2020-2546"><span class="toc-number">1.1.8.</span> <span class="toc-text">CVE-2020-2546</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2020-5902"><span class="toc-number">1.1.9.</span> <span class="toc-text">CVE-2020-5902</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2020-2551"><span class="toc-number">1.1.10.</span> <span class="toc-text">CVE-2020-2551</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2020-7980"><span class="toc-number">1.1.11.</span> <span class="toc-text">CVE-2020-7980</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2020-8165"><span class="toc-number">1.1.12.</span> <span class="toc-text">CVE-2020-8165</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2020-9484"><span class="toc-number">1.1.13.</span> <span class="toc-text">CVE-2020-9484</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2020-9495"><span class="toc-number">1.1.14.</span> <span class="toc-text">CVE-2020-9495</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2020–10199"><span class="toc-number">1.1.15.</span> <span class="toc-text">CVE-2020–10199</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#XSS"><span class="toc-number">1.2.</span> <span class="toc-text">XSS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文件包含"><span class="toc-number">1.3.</span> <span class="toc-text">文件包含</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2020-1938"><span class="toc-number">1.3.1.</span> <span class="toc-text">CVE-2020-1938</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文件上传"><span class="toc-number">1.4.</span> <span class="toc-text">文件上传</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2018-2894"><span class="toc-number">1.4.1.</span> <span class="toc-text">CVE-2018-2894</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2019-2618"><span class="toc-number">1.4.2.</span> <span class="toc-text">CVE-2019-2618</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SQL注入"><span class="toc-number">1.5.</span> <span class="toc-text">SQL注入</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#System"><span class="toc-number">2.</span> <span class="toc-text">System</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#提权"><span class="toc-number">2.1.</span> <span class="toc-text">提权</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2020-0796"><span class="toc-number">2.1.1.</span> <span class="toc-text">CVE-2020-0796</span></a></li></ol></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Web"><span class="toc-number">1.</span> <span class="toc-text">Web</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#RCE"><span class="toc-number">1.1.</span> <span class="toc-text">RCE</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2016-4437"><span class="toc-number">1.1.1.</span> <span class="toc-text">CVE-2016-4437</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2018-3191"><span class="toc-number">1.1.2.</span> <span class="toc-text">CVE-2018-3191</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2019-0192"><span class="toc-number">1.1.3.</span> <span class="toc-text">CVE-2019-0192</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2019-0232"><span class="toc-number">1.1.4.</span> <span class="toc-text">CVE-2019-0232</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2019-2725"><span class="toc-number">1.1.5.</span> <span class="toc-text">CVE-2019-2725</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2019-2729"><span class="toc-number">1.1.6.</span> <span class="toc-text">CVE-2019-2729</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2019-15107"><span class="toc-number">1.1.7.</span> <span class="toc-text">CVE-2019-15107</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2020-2546"><span class="toc-number">1.1.8.</span> <span class="toc-text">CVE-2020-2546</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2020-5902"><span class="toc-number">1.1.9.</span> <span class="toc-text">CVE-2020-5902</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2020-2551"><span class="toc-number">1.1.10.</span> <span class="toc-text">CVE-2020-2551</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2020-7980"><span class="toc-number">1.1.11.</span> <span class="toc-text">CVE-2020-7980</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2020-8165"><span class="toc-number">1.1.12.</span> <span class="toc-text">CVE-2020-8165</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2020-9484"><span class="toc-number">1.1.13.</span> <span class="toc-text">CVE-2020-9484</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2020-9495"><span class="toc-number">1.1.14.</span> <span class="toc-text">CVE-2020-9495</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2020–10199"><span class="toc-number">1.1.15.</span> <span class="toc-text">CVE-2020–10199</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#XSS"><span class="toc-number">1.2.</span> <span class="toc-text">XSS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文件包含"><span class="toc-number">1.3.</span> <span class="toc-text">文件包含</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2020-1938"><span class="toc-number">1.3.1.</span> <span class="toc-text">CVE-2020-1938</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文件上传"><span class="toc-number">1.4.</span> <span class="toc-text">文件上传</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2018-2894"><span class="toc-number">1.4.1.</span> <span class="toc-text">CVE-2018-2894</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2019-2618"><span class="toc-number">1.4.2.</span> <span class="toc-text">CVE-2019-2618</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SQL注入"><span class="toc-number">1.5.</span> <span class="toc-text">SQL注入</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#System"><span class="toc-number">2.</span> <span class="toc-text">System</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#泄露"><span class="toc-number">2.1.</span> <span class="toc-text">泄露</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2018-15473"><span class="toc-number">2.1.1.</span> <span class="toc-text">CVE-2018-15473</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#提权"><span class="toc-number">2.2.</span> <span class="toc-text">提权</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CVE-2017-0146"><span class="toc-number">2.3.</span> <span class="toc-text">CVE-2017-0146</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CVE-2017-7494"><span class="toc-number">2.4.</span> <span class="toc-text">CVE-2017-7494</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CVE-2019-0708"><span class="toc-number">2.5.</span> <span class="toc-text">CVE-2019-0708</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CVE-2020-0796"><span class="toc-number">2.6.</span> <span class="toc-text">CVE-2020-0796</span></a></li></ol></li></ol>
     </div>
   </span>
 </div>
@@ -149,7 +149,11 @@
   
 
   <div class="content" itemprop="articleBody">
-    <h1 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h1><h2 id="RCE"><a href="#RCE" class="headerlink" title="RCE"></a>RCE</h2><h3 id="CVE-2016-4437"><a href="#CVE-2016-4437" class="headerlink" title="CVE-2016-4437"></a>CVE-2016-4437</h3><p><strong>详情</strong></p>
+    <p>TODO:</p>
+<ul>
+<li>CVE-2018-14729</li>
+</ul>
+<h1 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h1><h2 id="RCE"><a href="#RCE" class="headerlink" title="RCE"></a>RCE</h2><h3 id="CVE-2016-4437"><a href="#CVE-2016-4437" class="headerlink" title="CVE-2016-4437"></a>CVE-2016-4437</h3><p><strong>详情</strong></p>
 <p>Apache Shiro是一款开源安全框架，提供身份验证、授权、密码学和会话管理。Shiro框架直观、易用，同时也能提供健壮的安全性。</p>
 <p>Apache Shiro 1.2.4及以前版本中，加密的用户信息序列化后存储在名为remember-me的Cookie中。</p>
 <p>攻击者可以使用Shiro的默认密钥伪造用户Cookie，触发Java反序列化漏洞，进而在目标机器上执行任意命令。</p>
@@ -160,6 +164,8 @@
 <h3 id="CVE-2018-3191"><a href="#CVE-2018-3191" class="headerlink" title="CVE-2018-3191"></a>CVE-2018-3191</h3><p><strong>详情</strong><br>JAVA RMI(Java Remote Method Invocation),其主要用于实现远程过程调用的Application编程接口。通过RMI可以使计算机上运行的程序调用远程服务器上的对象，其目的是使得远程接口对象的使用尽可能简化。<br>T3协议是用于Weblogic服务器和其他Java Application之间传输信息的协议，是实现上述RMI远程过程调用的专有协议，其允许客户端进行JNDI调用。<br>检测：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nmap -Pn -sV 192.168.137.128 -p7001 --=weblogic-t3-infi.nse</span><br></pre></td></tr></table></figure>
 <p><strong>POC</strong><br><a href="https://www.sohu.com/a/273147456_354899" target="_blank" rel="noopener">https://www.sohu.com/a/273147456_354899</a></p>
+<h3 id="CVE-2019-0192"><a href="#CVE-2019-0192" class="headerlink" title="CVE-2019-0192"></a>CVE-2019-0192</h3><p>Apache Solr 远程命令执行漏洞，影响版本：5.0.0 ~ 5.5.5、6.0.0 ~ 6.6.5。</p>
+<p>分析：<a href="https://xz.aliyun.com/t/4422" target="_blank" rel="noopener">https://xz.aliyun.com/t/4422</a></p>
 <h3 id="CVE-2019-0232"><a href="#CVE-2019-0232" class="headerlink" title="CVE-2019-0232"></a>CVE-2019-0232</h3><p><strong>详情</strong></p>
 <p>4月11日，Apache官方发布通告称将在Tomcat最新版本中修复一个远程代码执行漏洞（CVE-2019-0232），由于JRE将命令行参数传递给Windows的方式存在错误，会导致CGI Servlet受到远程执行代码的攻击。</p>
 <p>触发该漏洞需要同时满足以下条件：</p>
@@ -198,18 +204,12 @@
 <p><a href="https://xz.aliyun.com/t/5496" target="_blank" rel="noopener">https://xz.aliyun.com/t/5496</a></p>
 <hr>
 <h3 id="CVE-2019-15107"><a href="#CVE-2019-15107" class="headerlink" title="CVE-2019-15107"></a>CVE-2019-15107</h3><p><strong>详情</strong></p>
-<p>漏洞存在于webmin的重置密码功能处，（但是默认重置密码功能并未开启）。只需要用<code>|</code>就可以进行命令执行。</p>
+<p>漏洞存在于webmin的重置密码功能处，（但是默认重置密码功能并未开启）。</p>
+<p>只需要用<code>|</code>就可以进行命令执行。</p>
+<p>影响版本：Webmin &lt;=1.920 </p>
 <p><strong>POC</strong></p>
 <p>shodan：webmin port 10000</p>
 <p><a href="https://xz.aliyun.com/t/6040" target="_blank" rel="noopener">https://xz.aliyun.com/t/6040</a></p>
-<hr>
-<h3 id="CVE-2019-19781"><a href="#CVE-2019-19781" class="headerlink" title="CVE-2019-19781"></a>CVE-2019-19781</h3><p><strong>详情</strong></p>
-<p>Citrix旗下多款交付控制器(ADC)和网关(NetScaler)存在RCE漏洞，攻击者在无需身份验证的情况下就可执行任意命令。</p>
-<p>这个RCE漏洞会有一个标记漏洞（其中之一的标记），即本次报道的Citrx路径遍历漏洞。该漏洞利用复杂性低，且无权限要求，攻击者只能遍历vpns文件夹，但攻击者可能利用Citrx路径遍历漏洞进行RCE漏洞试探，从而发起进一步精准攻击。</p>
-<p><strong>POC</strong></p>
-<p><a href="https://github.com/trustedsec/cve-2019-19781" target="_blank" rel="noopener">https://github.com/trustedsec/cve-2019-19781</a></p>
-<p><a href="https://www.cnblogs.com/panisme/p/12542721.html" target="_blank" rel="noopener">https://www.cnblogs.com/panisme/p/12542721.html</a></p>
-<p><a href="https://www.jianshu.com/p/03b175711524" target="_blank" rel="noopener">https://www.jianshu.com/p/03b175711524</a></p>
 <hr>
 <h3 id="CVE-2020-2546"><a href="#CVE-2020-2546" class="headerlink" title="CVE-2020-2546"></a>CVE-2020-2546</h3><p><strong>详情</strong></p>
 <p>该漏洞通过T3协议实现利用、攻击者可通过此漏洞实现远程代码执行。</p>
@@ -293,6 +293,250 @@
 <p>攻击者可以通过为登录表单提供特殊值来从连接的LDAP服务器检索用户属性数据。使用某些字符，可以修改用于查询LDAP用户的LDAP过滤器。通过测量登录请求的响应时间，可以从LDAP用户对象中检索任意属性数据。</p>
 <p><strong>POC</strong></p>
 <p>暂无</p>
+<table>
+<thead>
+<tr>
+<th align="left">编号</th>
+<th align="left">标题</th>
+<th align="left">范围</th>
+<th align="left">说明</th>
+<th align="left">POC</th>
+<th align="left">分析</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">CVE-2016-4437</td>
+<td align="left">Apache Shiro 远程代码执行</td>
+<td align="left">&lt;=1.2.4</td>
+<td align="left"><code>Apache Shiro 1.2.4及以前版本中，加密的用户信息序列化后存储在名为remember-me的Cookie中。攻击者可以使用Shiro的默认密钥伪造用户Cookie，触发Java反序列化漏洞，进而在目标机器上执行任意命令。</code></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">CVE-2018-3191</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">CVE-2019-0192</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">CVE-2019-0232</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">CVE-2019-2725</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody></table>
 <hr>
 <h3 id="CVE-2020–10199"><a href="#CVE-2020–10199" class="headerlink" title="CVE-2020–10199"></a>CVE-2020–10199</h3><p><strong>详情</strong></p>
 <p>Nexus Repository Manager 3 是一款软件仓库，可以用来存储和分发Maven、NuGET等软件源仓库。</p>
@@ -336,7 +580,11 @@
 <p><a href="https://github.com/jas502n/cve-2019-2618" target="_blank" rel="noopener">https://github.com/jas502n/cve-2019-2618</a></p>
 <p><a href="https://www.cnblogs.com/zhengjim/p/10815150.html" target="_blank" rel="noopener">https://www.cnblogs.com/zhengjim/p/10815150.html</a></p>
 <hr>
-<h2 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h2><h1 id="System"><a href="#System" class="headerlink" title="System"></a>System</h1><h2 id="提权"><a href="#提权" class="headerlink" title="提权"></a>提权</h2><h3 id="CVE-2020-0796"><a href="#CVE-2020-0796" class="headerlink" title="CVE-2020-0796"></a>CVE-2020-0796</h3><p><strong>详情</strong></p>
+<h2 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h2><h1 id="System"><a href="#System" class="headerlink" title="System"></a>System</h1><h2 id="泄露"><a href="#泄露" class="headerlink" title="泄露"></a>泄露</h2><p><strong>CVE-2014-0160</strong></p>
+<p>心脏滴血！</p>
+<h3 id="CVE-2018-15473"><a href="#CVE-2018-15473" class="headerlink" title="CVE-2018-15473"></a>CVE-2018-15473</h3><h2 id="提权"><a href="#提权" class="headerlink" title="提权"></a>提权</h2><h2 id="CVE-2017-0146"><a href="#CVE-2017-0146" class="headerlink" title="CVE-2017-0146"></a>CVE-2017-0146</h2><p><strong>详情</strong></p>
+<p>永恒之蓝，ms17-010 ！</p>
+<h2 id="CVE-2017-7494"><a href="#CVE-2017-7494" class="headerlink" title="CVE-2017-7494"></a>CVE-2017-7494</h2><h2 id="CVE-2019-0708"><a href="#CVE-2019-0708" class="headerlink" title="CVE-2019-0708"></a>CVE-2019-0708</h2><h2 id="CVE-2020-0796"><a href="#CVE-2020-0796" class="headerlink" title="CVE-2020-0796"></a>CVE-2020-0796</h2><p><strong>详情</strong></p>
 <p>Microsoft Server Message Block 3.1.1（SMBv3）协议处理某些请求的方式中存在远程执行代码漏洞，可以在目标smb服务器或客户端上执行代码。</p>
 <p>为了利用针对服务器的漏洞，未经身份验证的攻击者可以将特制数据包发送到目标SMBv3服务器；若要利用针对客户端的漏洞，未经身份验证的攻击者将需要配置恶意的SMBv3服务器，并诱使用户连接到该服务器。</p>
 <p><strong>POC</strong></p>
@@ -393,7 +641,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Web"><span class="toc-number">1.</span> <span class="toc-text">Web</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#RCE"><span class="toc-number">1.1.</span> <span class="toc-text">RCE</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2016-4437"><span class="toc-number">1.1.1.</span> <span class="toc-text">CVE-2016-4437</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2018-3191"><span class="toc-number">1.1.2.</span> <span class="toc-text">CVE-2018-3191</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2019-0232"><span class="toc-number">1.1.3.</span> <span class="toc-text">CVE-2019-0232</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2019-2725"><span class="toc-number">1.1.4.</span> <span class="toc-text">CVE-2019-2725</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2019-2729"><span class="toc-number">1.1.5.</span> <span class="toc-text">CVE-2019-2729</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2019-15107"><span class="toc-number">1.1.6.</span> <span class="toc-text">CVE-2019-15107</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2019-19781"><span class="toc-number">1.1.7.</span> <span class="toc-text">CVE-2019-19781</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2020-2546"><span class="toc-number">1.1.8.</span> <span class="toc-text">CVE-2020-2546</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2020-5902"><span class="toc-number">1.1.9.</span> <span class="toc-text">CVE-2020-5902</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2020-2551"><span class="toc-number">1.1.10.</span> <span class="toc-text">CVE-2020-2551</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2020-7980"><span class="toc-number">1.1.11.</span> <span class="toc-text">CVE-2020-7980</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2020-8165"><span class="toc-number">1.1.12.</span> <span class="toc-text">CVE-2020-8165</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2020-9484"><span class="toc-number">1.1.13.</span> <span class="toc-text">CVE-2020-9484</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2020-9495"><span class="toc-number">1.1.14.</span> <span class="toc-text">CVE-2020-9495</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2020–10199"><span class="toc-number">1.1.15.</span> <span class="toc-text">CVE-2020–10199</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#XSS"><span class="toc-number">1.2.</span> <span class="toc-text">XSS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文件包含"><span class="toc-number">1.3.</span> <span class="toc-text">文件包含</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2020-1938"><span class="toc-number">1.3.1.</span> <span class="toc-text">CVE-2020-1938</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文件上传"><span class="toc-number">1.4.</span> <span class="toc-text">文件上传</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2018-2894"><span class="toc-number">1.4.1.</span> <span class="toc-text">CVE-2018-2894</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2019-2618"><span class="toc-number">1.4.2.</span> <span class="toc-text">CVE-2019-2618</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SQL注入"><span class="toc-number">1.5.</span> <span class="toc-text">SQL注入</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#System"><span class="toc-number">2.</span> <span class="toc-text">System</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#提权"><span class="toc-number">2.1.</span> <span class="toc-text">提权</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2020-0796"><span class="toc-number">2.1.1.</span> <span class="toc-text">CVE-2020-0796</span></a></li></ol></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Web"><span class="toc-number">1.</span> <span class="toc-text">Web</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#RCE"><span class="toc-number">1.1.</span> <span class="toc-text">RCE</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2016-4437"><span class="toc-number">1.1.1.</span> <span class="toc-text">CVE-2016-4437</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2018-3191"><span class="toc-number">1.1.2.</span> <span class="toc-text">CVE-2018-3191</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2019-0192"><span class="toc-number">1.1.3.</span> <span class="toc-text">CVE-2019-0192</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2019-0232"><span class="toc-number">1.1.4.</span> <span class="toc-text">CVE-2019-0232</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2019-2725"><span class="toc-number">1.1.5.</span> <span class="toc-text">CVE-2019-2725</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2019-2729"><span class="toc-number">1.1.6.</span> <span class="toc-text">CVE-2019-2729</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2019-15107"><span class="toc-number">1.1.7.</span> <span class="toc-text">CVE-2019-15107</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2020-2546"><span class="toc-number">1.1.8.</span> <span class="toc-text">CVE-2020-2546</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2020-5902"><span class="toc-number">1.1.9.</span> <span class="toc-text">CVE-2020-5902</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2020-2551"><span class="toc-number">1.1.10.</span> <span class="toc-text">CVE-2020-2551</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2020-7980"><span class="toc-number">1.1.11.</span> <span class="toc-text">CVE-2020-7980</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2020-8165"><span class="toc-number">1.1.12.</span> <span class="toc-text">CVE-2020-8165</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2020-9484"><span class="toc-number">1.1.13.</span> <span class="toc-text">CVE-2020-9484</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2020-9495"><span class="toc-number">1.1.14.</span> <span class="toc-text">CVE-2020-9495</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2020–10199"><span class="toc-number">1.1.15.</span> <span class="toc-text">CVE-2020–10199</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#XSS"><span class="toc-number">1.2.</span> <span class="toc-text">XSS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文件包含"><span class="toc-number">1.3.</span> <span class="toc-text">文件包含</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2020-1938"><span class="toc-number">1.3.1.</span> <span class="toc-text">CVE-2020-1938</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文件上传"><span class="toc-number">1.4.</span> <span class="toc-text">文件上传</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2018-2894"><span class="toc-number">1.4.1.</span> <span class="toc-text">CVE-2018-2894</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2019-2618"><span class="toc-number">1.4.2.</span> <span class="toc-text">CVE-2019-2618</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SQL注入"><span class="toc-number">1.5.</span> <span class="toc-text">SQL注入</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#System"><span class="toc-number">2.</span> <span class="toc-text">System</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#泄露"><span class="toc-number">2.1.</span> <span class="toc-text">泄露</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2018-15473"><span class="toc-number">2.1.1.</span> <span class="toc-text">CVE-2018-15473</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#提权"><span class="toc-number">2.2.</span> <span class="toc-text">提权</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CVE-2017-0146"><span class="toc-number">2.3.</span> <span class="toc-text">CVE-2017-0146</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CVE-2017-7494"><span class="toc-number">2.4.</span> <span class="toc-text">CVE-2017-7494</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CVE-2019-0708"><span class="toc-number">2.5.</span> <span class="toc-text">CVE-2019-0708</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CVE-2020-0796"><span class="toc-number">2.6.</span> <span class="toc-text">CVE-2020-0796</span></a></li></ol></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">

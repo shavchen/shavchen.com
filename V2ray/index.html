@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+	<meta name="referrer" content="no-referrer" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Welcome to my blog, enter password to read.">
+<meta name="keywords" content="v2ray">
+<meta property="og:type" content="article">
+<meta property="og:title" content="V2ray">
+<meta property="og:url" content="https:&#x2F;&#x2F;shavchen.github.io&#x2F;V2ray&#x2F;index.html">
+<meta property="og:site_name" content="shavchen">
+<meta property="og:description" content="Welcome to my blog, enter password to read.">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-08-22T14:06:22.223Z">
+<meta name="twitter:card" content="summary">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>V2ray</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Article</a></li>
+         
+          <li><a href="/categories/">Categories</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/vulstack-1-writeup/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/%E5%91%BD%E4%BB%A4%E9%80%9F%E6%9F%A5/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://shavchen.github.io/V2ray/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://shavchen.github.io/V2ray/&text=V2ray" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://shavchen.github.io/V2ray/&title=V2ray" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://shavchen.github.io/V2ray/&is_video=false&description=V2ray" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=V2ray&body=Check out this article: https://shavchen.github.io/V2ray/" target="_blank" rel="noopener"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://shavchen.github.io/V2ray/&title=V2ray" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://shavchen.github.io/V2ray/&title=V2ray" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://shavchen.github.io/V2ray/&title=V2ray" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://shavchen.github.io/V2ray/&title=V2ray" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://shavchen.github.io/V2ray/&name=V2ray&description=Welcome to my blog, enter password to read." target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        V2ray
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">shavchen</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-08-08T13:53:17.000Z" itemprop="datePublished">2020-08-08</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/Grocery/">Grocery</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/v2ray/" rel="tag">v2ray</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <div id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <div class="hbe-input-container">
+  <input type="password" id="hbePass" placeholder="" />
+    <label for="hbePass">Welcome to my blog, enter password to read.</label>
+    <div class="bottom-line"></div>
+  </div>
+  <script id="hbeData" type="hbeData" data-hmacdigest="dd0edf30585aa4c448c20a43c2281c601a18d2724d9dcc8eb8b5a4fd66b77c7e">fd7efd035a178ba979f2d73a988d58fe6dd20a8bfc7f3eaad707d3936e36a76cdd1b33d9e4cc89b7cdecc8a6eedefe374f6165597906d4747fbbdd78971357f93770dad1419d28ac27a8e43b418cbc1b4ae411c1311ae4dee962fc81bf01099a0b3ac4d4f237cb67869ccf4dd6b42d657c10d84b2c2588063e4454730a4808ca701c7e8e61d3ae05deafd567852bd7f2c8da92b5e89ac692c94f4cb5eab6d94da8b15d61a5dfccec67a393391269f75f7c2eef5356f4a4937aa9c804b6fc2e04558bc6a99c7e5d197b900882be3389fdab96aa8f8495ae44c5e3a11ab67a314a5317af56d86e6bdda7de951b20bc6fb743a4151ae6652070e459bd955d2a2c777d3cf0b367489710e4f9a619b329fc86ecf350241179d6ff76b78e2c9162de5e5453cf8b063144f94de70e88b4d73dd9b1a77ea23edbd861fc19c677a858bddd1aadc414d92cfafa7b0aff4d37815439d3ebcf37a2ae073fb3bb22aa809d7030f223df7921b0f73ce2c3bbd9672d2d8b2914ad8f9e2f420caa545c0300bccfab7f6f9ad2dae085902a9aedce8622edb2c3618dc1f5705a43afe6626c24824f0b975c15a4300ae5e63ac3a59148971a71e1fe1b7b6f4f919c515c51957f5b6986d16dfc6c7c29d17f934552dac28aae865cbcc0eef92e4021fe2006380a19f4dc49aba922f902044ba589ec8bf70a5bc8f62b159847124243363b88d5839910ef5cee5292409f159080773209a020e8c9707b03f8a2ab2f9c2b884170eae8d6e11ed5fa8563df88c79e52e64e2ee73711ec2bc45627d02822519ebbcc2c71bd7abda0f74254c1b121b86573ac9750f33392c3629d24099b532d4870770d60761625a9753b1c639503dd02fdb51ea689de46bd9deb134a5953076e2675513df448a08ecd4f66f4bc9d3ca325db73ba6a328ddad41da81ecd16a455964bc63b9c343852d61174e4b327250f37c497b9d0787f57bf3b458cb028e4832838bf79564c80e1fcf4af12cb1fc06c4f1047a1c14128632616429c7f49172196b80cc91488a6d420f0aa7496104a43a8a71fa923249361716324aba19b094f0db37858bc02e5afa239f0524949a04c9cae3d0e262c9cb90da86f70472b24cd0390ca63dc80b25fd11223e4f56871cb306fcdf36ae531072f9ccae221c7ae1bdc081c91f2f2fe7d3e263040a0312d5401ad76e0ba16045704a39c069adfe87417e6ecb83fe7a0926d16ca7a7070611c8ed94b329fcd4d6a6eda5bd87d107727a6610772f60c9756bcd52bfc3870c0dbd33d7e4a20bd5fcc3be85fa5c5181d7633e82985ce1fd6c363aaf4e0cbaaad3db1167385fc60ea6859d95827b689a7ad0ab852ecb52bb8dc17756cbd78d97c8c889ddbb8d61238b51b8e0007c763fdf3ed0015a56e420736184e62f7dcd424e429b6ce92824a4e6193a923bf4117e4b3e67c9e8451de4ed2add58a1aa9a62626e5afe0dd2bcd4e7947a0ea483567f6421df63bf1ea6fd42b142d6bc6cb212381c235e8828b119591353c2527aa38137af00d02814988cb24306cec6e01219ab890ff4f6b69e2499723a4e8b61dd57037825f7537adc722a940124603c757bc79bf76346ce6e111a959d5fb21733ddb5993d9f5057827ff734a27a78e67f0957beb37c29c407faeae8a988695843daa980d77c017230850374d705bc13c6726c67b5b9dbeed390cfd690bdebe93ac1bdca99c273219e8ca16eb729dd72e903c3cd7acc09465d5418c83fd8568c86b6d744375fb6dd5aacb27df0798ce217c9a29ca77bab476e225540709057ce9bedce4e12b3f0f6ae1747eedad0e849397678acef7534e62481e07301d584bf0f3246674b3630cb34d10ef327b8df9d868a152530ee81fbbd17129688be9983f3a4dffbbbe07414959b547bdba1c9e309ac4c9e7ca8b92f3ce43d712c6095c1f257c67ad6255b1f9f51a1a3599485ac73f01508a2737aa5afc8a4bd12d3522a40a7209d3fc83481becf9bb375bb56daf9d4ee0ad3fa8ba8da5f66d30d29977ecb74437a7ce2a34f74df09d2b891127fccc7918a70ed4b3efb93481027d067738674ce8258dbe37f71b9ce6ea9982492fd7ce93933e37e3504fa42ccc6b64949e7b1b8c5e9ee492239c4c698db0af45190e395254473c093d2b5b3eb843cc57c16c26e1c01b964cd267511d4a720f1ca6819166619d55c657bd5f840428876edbbec9b2181a5aa00d0649d6db533460b81993ca3d88ad6407cdd9ffced4c5d0d1f669cd26430c4738a00a130781a6785ab8a865cd634b6aa03e8942f0608578ba356f1273cc214cc76ed50d78f21065043a8ec0db17c7d41db99e482f9fbce3bb133e86065666c1b0677e046f3eac075db574b476b4b3016f391cbaca5d9a4eaea507fb92b4106db0dcda760d21f73b0bce9a7d801e96d6041d42b97b0bdb09d19e6b68bfa8c29736d6ca6d90398f1e2b0e393bb15b545b4e4c8f0021b67468f8047fa792f74a4602bf8eee0d28cfb628d957ea6c6263a4405071d14ac7151be95e0ec57b5772d5a8e740262ae65776351d20b948dd3f29aeb40b52925f13e3c9e445420517de4e527e396fb2ea87c4a519813da40837f3ec37c3f2cd0fded32b413d773d55b83711766c70e2e30d320aed06db4fa4c013e3f6c6b322319b7dbc5bc22a849a59aaf1c8bfc22d12b92bcb8716b91691c5c1c874b48e56a17bdd065b18515c2fac62326a78d6625d9c9630e8b47daa11c807789a962036d4bc8e61d7486e5eb27d316095ad5954ab8cdc2fc6616a2fc91600ecdc272fe7db8487e64f7d913549ae632cb67736f6652bc8305eb5973b88d037dc8bd14547e00542713a91755afc5e4e692628d2c53de064fe457f439089c012290b7d52869dbc0c5fbb8d911f0e979bd919cb2a520b5f6f990638fd922444eba5f2f15ca9bdb75e2fd4763577506a6a6d21234b36bb444bc5f29db12b17f62e17ed90bfcb7590fe69ea2c722148293daecf33fd590efa0ae9570907a82787034e59d8cb4b10e4b7de61e147cc0a4a0cef6407c73c8cb8c287355e080fe79122e20b1fb7cbe2b0f06df2494d03cdf7644f8304ce28001a1aecf0a01d5d7a077c8825dcd9faea4fa977fa19decc3b3daeca28be9d584c64f47acdf4b36f1a7b9cacc43b1b57b262e8e4a8f335f464925cf9c3975e02091c8ffe9a80a57bdf567c51ee75c65835260c6eecef0c19fa9b1a723d477da6977eb8c722441f9d0bd7b267234b400cf4f77fa7122740243f3c7bbf0f08a0dbc37a02fb3c150415935be44d34849ca854b6bff26ec382e9b7168eb1f55f4160b617e8aff7e162eff3f672e67ed952744f05666033eac9ae343a04e980c266c5543ba28ff12e0e7c19a1d0bc374641081cb181d115cf8fe5b564802c4b406cca4e633ea8d8de17dd0d940e8ad4cc817a2941f857087e75d212ee6412dbaf7a776a3a41b1abbb592c0cd83f1bea1ca5cdac1da481aa4943b71e6c553b59a052a12e1e6b2df886de366726ab49f726e366b81191133b83a80e81e486dd7610fa5df3cf8c8cb04eab1353d34123fa894d1606b615df3732e6226e9e2d9412ca761f76c38a518ddb73e49fc7c8c1f70fea0ec945896325ebf50fbb3e8934cba95a024fd11b7f50baf1fcf1bef874d18d0d9f23ff1cb13f63601f6624e7de838341f7da54c7110da84b171da9b1fc224227183438d8f523ef714e93342721b68b41e36e70b70293a9f383c0ea7578655ae8673c4ac3566e199e9946db6ff8da71082819e268140a10382b223c150761cd727a660ddf0c2592670cb10a62be6638a8497467ff9adca2c9251fd9d6fb83797adc2943fd8186354e781c6fbe60212ea259946606b0a140581f08a63f5a05a6b8c925ac8f1b526444420a0bd16d5de1804e13b3a66193f82d89069866aa2808c5cc21675cf2c27759c0291b47b3b2165220437fe071e5e51c31071486524333d5a9875a1defd951b351f694a5f75b60c080b18643d3c481e3db3f8b90855e8ae08ea768dddecd394289a924b11d6be2a79afb77ff162c34a06cf8eaa58376d3a69f308237b64b12efde27ea8dace2ac68d686e8d551a884d52e642a82c577181f4dfe46f84392918010c623cd914e97901d16e9cd91b024b385c5498676f502c6524b829614f3c8107212a33a5c28b27aa97efee2a4649015a9b4f4e48be8400df123ebeb37f0c392c784dadc1182</script>
+</div>
+<script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">
+  </div>
+  
+</article>
+
+
+<!-- <div id="ad-box">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-1769617155450062"
+         data-ad-slot="6920805491"
+         data-ad-format="link"
+         data-full-width-responsive="true"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div> -->
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+<div class="blog-post-comments"></div>
+<script>
+    new Valine({
+        el: '.blog-post-comments', 
+        app_id: 'DgMf1NChRFNzPlOrKd3gpBPk-gzGzoHsz', 	
+        app_key: 'rFtTafou49X7djrYTj4AN96G', 		    
+        placeholder: '说点什么?', 
+        avatar:'retro',
+        notify:true,
+        verify:true
+    });
+</script>
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Article</a></li>
+         
+          <li><a href="/categories/">Categories</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://shavchen.github.io/V2ray/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://shavchen.github.io/V2ray/&text=V2ray" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://shavchen.github.io/V2ray/&title=V2ray" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://shavchen.github.io/V2ray/&is_video=false&description=V2ray" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=V2ray&body=Check out this article: https://shavchen.github.io/V2ray/" target="_blank" rel="noopener"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://shavchen.github.io/V2ray/&title=V2ray" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://shavchen.github.io/V2ray/&title=V2ray" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://shavchen.github.io/V2ray/&title=V2ray" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://shavchen.github.io/V2ray/&title=V2ray" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://shavchen.github.io/V2ray/&name=V2ray&description=Welcome to my blog, enter password to read." target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2020 shavchen
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Article</a></li>
+         
+          <li><a href="/categories/">Categories</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<!-- clipboard -->
+
+  <script src="/lib/clipboard/clipboard.min.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight .code pre").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      target: function(trigger) {
+        return trigger.nextElementSibling;
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

